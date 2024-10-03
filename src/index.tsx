@@ -32,6 +32,7 @@ root.render(
         imageName: 'apartment-03.jpg'
       },
       {
+        id: 4,
         rating: 4, cardType: PlaceType.room,
         description: 'wood and stone place', price: 80,
         imageName: 'room.jpg'

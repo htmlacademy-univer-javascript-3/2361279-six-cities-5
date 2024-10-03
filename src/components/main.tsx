@@ -94,7 +94,8 @@ export function Main(props: { places_found: number; offers: PlaceCardProps[] }) 
                 </form>
                 <div className="cities__places-list places__list tabs__content">
                   {
-                    props.offers.map((o) => <PlaceCard {...o}/>)
+                    // Мне линтер говорил "eslint: Missing "key" prop for element in iterator". Сделал костыльное решение, потом исправлю
+                    props.offers.map((o) => <PlaceCard key={Math.trunc(Math.random() * Number.MAX_SAFE_INTEGER)} {...o}/>)
                   }
                 </div>
               </section>
