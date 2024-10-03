@@ -1,6 +1,6 @@
 import {PlaceCard, PlaceCardProps} from './place_card.tsx';
 
-export function Main(props: { places_found: number; offers: PlaceCardProps[] }) {
+export function Main(props: { placesFoundCount: number; placeCards: PlaceCardProps[] }) {
   return (
     <body>
       <div className="page page--gray page--main">
@@ -76,7 +76,7 @@ export function Main(props: { places_found: number; offers: PlaceCardProps[] }) 
             <div className="cities__places-container container">
               <section className="cities__places places">
                 <h2 className="visually-hidden">places</h2>
-                <b className="places__found">{props.places_found} places to stay in amsterdam</b>
+                <b className="places__found">{props.placesFoundCount} places to stay in amsterdam</b>
                 <form className="places__sorting" action="#" method="get">
                   <span className="places__sorting-caption">sort by</span>
                   <span className="places__sorting-type" tabIndex={0}>
@@ -95,7 +95,7 @@ export function Main(props: { places_found: number; offers: PlaceCardProps[] }) 
                 <div className="cities__places-list places__list tabs__content">
                   {
                     // Мне линтер говорил "eslint: Missing "key" prop for element in iterator". Сделал костыльное решение, потом исправлю
-                    props.offers.map((o) => <PlaceCard key={Math.trunc(Math.random() * Number.MAX_SAFE_INTEGER)} {...o}/>)
+                    props.placeCards.map((o) => <PlaceCard key={Math.trunc(Math.random() * Number.MAX_SAFE_INTEGER)} {...o}/>)
                   }
                 </div>
               </section>

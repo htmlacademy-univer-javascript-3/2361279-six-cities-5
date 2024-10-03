@@ -10,7 +10,7 @@ const root = ReactDOM.createRoot(
 
 root.render(
   <React.StrictMode>
-    <App places_found={400} offers={[
+    <App placesFoundCount={400} placeCards={[
       {
         rating: 4, cardType: PlaceType.apartment,
         description: 'beautiful & luxurious apartment at great location', price: 120,
