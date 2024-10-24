@@ -1,7 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import {App} from './components/app.tsx';
-import {mockPlaceCards} from './constants.ts';
+import {mockPlaceCards} from './mocks/offer.ts';
+import {mockFavoriteCards} from './mocks/favorite.ts';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -9,6 +10,6 @@ const root = ReactDOM.createRoot(
 
 root.render(
   <React.StrictMode>
-    <App placeCards={mockPlaceCards}/>
+    <App placeCards={mockPlaceCards} favoriteCards={mockFavoriteCards}/>
   </React.StrictMode>
 );

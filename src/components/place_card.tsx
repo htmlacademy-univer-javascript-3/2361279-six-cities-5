@@ -1,9 +1,11 @@
-import {PlaceType} from '../constants.ts';
+import {PlaceType} from '../mocks/offer.ts';
+import {Link} from 'react-router-dom';
 
 export type PlaceCardProps = {
+  id: number;
   rating: number;
   cardType: PlaceType;
-  description: string;
+  name: string;
   price: number;
   imageName: string;
 }
@@ -41,7 +43,7 @@ export function PlaceCard(props: PlaceCardProps) {
           </div>
         </div>
         <h2 className='place-card__name'>
-          <a href='#'>{props.description}</a>
+          <Link to={`/offer/${props.id}`}>{props.name}</Link>
         </h2>
         <p className='place-card__type'>{props.cardType}</p>
       </div>
