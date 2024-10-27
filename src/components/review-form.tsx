@@ -26,7 +26,7 @@ export function ReviewForm() {
           .map((i) => i + 1)
           .map((i) => (
             <ReviewStar checked={i === reviewData.rating}
-              onChange={handleStarChange} key={i}
+              handleStarChange={handleStarChange} key={i}
               rating={i as ReviewRating}
             />))}
       </div>

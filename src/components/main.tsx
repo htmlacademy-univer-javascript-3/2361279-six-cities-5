@@ -1,6 +1,6 @@
-import {Place} from './offered-place-card.tsx';
 import {OfferedPlacesCardList} from './offered-places-card-list.tsx';
 import {Layout} from './layout.tsx';
+import {Place} from '../shared/types/place.ts';
 
 export type MainProps = {
   offeredPlaces: Place[];
@@ -8,7 +8,7 @@ export type MainProps = {
 
 export function Main(props: MainProps) {
   return (
-    <Layout>
+    <Layout containerClasses={'page--gray page--main'}>
       <main className="page__main page__main--index">
         <h1 className="visually-hidden">cities</h1>
         <div className="tabs">
@@ -16,32 +16,32 @@ export function Main(props: MainProps) {
             <ul className="locations__list tabs__list">
               <li className="locations__item">
                 <a className="locations__item-link tabs__item" href="#">
-                  <span>paris</span>
+                  <span>Paris</span>
                 </a>
               </li>
               <li className="locations__item">
                 <a className="locations__item-link tabs__item" href="#">
-                  <span>cologne</span>
+                  <span>Cologne</span>
                 </a>
               </li>
               <li className="locations__item">
                 <a className="locations__item-link tabs__item" href="#">
-                  <span>brussels</span>
+                  <span>Brussels</span>
                 </a>
               </li>
               <li className="locations__item">
                 <a className="locations__item-link tabs__item tabs__item--active">
-                  <span>amsterdam</span>
+                  <span>Amsterdam</span>
                 </a>
               </li>
               <li className="locations__item">
                 <a className="locations__item-link tabs__item" href="#">
-                  <span>hamburg</span>
+                  <span>Hamburg</span>
                 </a>
               </li>
               <li className="locations__item">
                 <a className="locations__item-link tabs__item" href="#">
-                  <span>dusseldorf</span>
+                  <span>Dusseldorf</span>
                 </a>
               </li>
             </ul>
@@ -62,9 +62,9 @@ export function Main(props: MainProps) {
                 </span>
                 <ul className="places__options places__options--custom places__options--opened">
                   <li className="places__option places__option--active" tabIndex={0}>popular</li>
-                  <li className="places__option" tabIndex={0}>price: low to high</li>
-                  <li className="places__option" tabIndex={0}>price: high to low</li>
-                  <li className="places__option" tabIndex={0}>top rated first</li>
+                  <li className="places__option" tabIndex={0}>Price: low to high</li>
+                  <li className="places__option" tabIndex={0}>Price: high to low</li>
+                  <li className="places__option" tabIndex={0}>Top rated first</li>
                 </ul>
               </form>
               <div className="cities__places-list places__list tabs__content">

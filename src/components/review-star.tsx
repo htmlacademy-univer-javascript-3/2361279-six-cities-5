@@ -6,7 +6,7 @@ export type ReviewRating = 1 | 2 | 3 | 4 | 5;
 
 export type ReviewStarProps = {
   rating: 1 | 2 | 3 | 4 | 5;
-  onChange: ChangeEventHandler;
+  handleStarChange: ChangeEventHandler;
   checked: boolean;
 };
 
@@ -15,7 +15,7 @@ export function ReviewStar(props: ReviewStarProps) {
   return (
     <>
       <input className="form__rating-input visually-hidden" name="rating" value={props.rating}
-        id={id} onChange={props.onChange} checked={props.checked}
+        id={id} onChange={props.handleStarChange} checked={props.checked}
         type="radio"
       />
       <label htmlFor={id} className="reviews__rating-label form__rating-label"

@@ -1,5 +1,5 @@
 import {useParams} from 'react-router-dom';
-import {mockPlaceCards} from '../mocks/offer.ts';
+import {mockOfferPlaces} from '../shared/mocks/offer.ts';
 import {NotFound} from './not-found.tsx';
 import {Layout} from './layout.tsx';
 import {ReviewForm} from './review-form.tsx';
@@ -7,7 +7,7 @@ import {ReviewForm} from './review-form.tsx';
 
 export function Offer() {
   const id = parseInt(useParams().id as string, 10);
-  const place = mockPlaceCards.find((p) => p.id === id);
+  const place = mockOfferPlaces.find((p) => p.id === id);
   if (!place) {
     return <NotFound/>;
   }

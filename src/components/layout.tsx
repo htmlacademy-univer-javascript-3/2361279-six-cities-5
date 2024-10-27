@@ -1,11 +1,12 @@
 import {PropsWithChildren} from 'react';
 import {Link} from 'react-router-dom';
+import clsx from 'clsx';
 
-export type LayoutProps = { containerClasses: string[] } & PropsWithChildren;
+export type LayoutProps = { containerClasses?: string } & PropsWithChildren;
 
 export function Layout(props: LayoutProps) {
   return (
-    <div className="page">
+    <div className={clsx(props.containerClasses, 'page')}>
       <header className="header">
         <div className="container">
           <div className="header__wrapper">

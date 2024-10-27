@@ -1,29 +1,25 @@
 import {Link} from 'react-router-dom';
-import {PlaceType} from '../mocks/offer.ts';
+import {Place} from '../shared/types/place.ts';
+import {MouseEventHandler} from 'react';
 
-export type Place = {
-  id: number;
-  rating: number;
-  cardType: PlaceType;
-  name: string;
-  price: number;
-  imageName: string;
-}
-
-export type OfferedPlaceCardProps = { place: Place };
+export type OfferedPlaceCardProps = {
+  place: Place;
+  handleMouseOver: MouseEventHandler;
+};
 
 export function OfferedPlaceCard(props: OfferedPlaceCardProps) {
+  const offerUrl = `/offer/${props.place.id}`;
   return (
-    <article className='cities__card place-card'>
+    <article onMouseOver={props.handleMouseOver} className='cities__card place-card'>
       <div className='place-card__mark'>
         <span>premium</span>
       </div>
       <div className='cities__image-wrapper place-card__image-wrapper'>
-        <a href='#'>
+        <Link to={offerUrl}>
           <img className='place-card__image' src={`img/${props.place.imageName}`} width='260' height='200'
             alt='place image'
           />
-        </a>
+        </Link>
       </div>
       <div className='place-card__info'>
         <div className='place-card__price-wrapper'>
@@ -45,7 +41,7 @@ export function OfferedPlaceCard(props: OfferedPlaceCardProps) {
           </div>
         </div>
         <h2 className='place-card__name'>
-          <Link to={`/offer/${props.place.id}`}>{props.place.name}</Link>
+          <Link to={offerUrl}>{props.place.name}</Link>
         </h2>
         <p className='place-card__type'>{props.place.cardType}</p>
       </div>

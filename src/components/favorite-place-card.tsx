@@ -1,5 +1,5 @@
-import {Place} from './offered-place-card.tsx';
 import {Link} from 'react-router-dom';
+import {Place} from '../shared/types/place.ts';
 
 export type FavoritePlaceCardProps = { place: Place};
 

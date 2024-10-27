@@ -1,8 +1,6 @@
-import {Place} from '../components/offered-place-card.tsx';
+import {Place, PlaceType} from '../types/place.ts';
 
-import {PlaceType} from './offer.ts';
-
-export const mockFavoriteCards: Place[] = [
+export const mockFavoritePlaces: Place[] = [
   {
     id: 0,
     rating: 5, cardType: PlaceType.Apartment,

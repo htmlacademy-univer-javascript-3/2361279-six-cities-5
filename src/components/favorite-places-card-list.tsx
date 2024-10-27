@@ -1,14 +1,11 @@
-import {useState} from 'react';
-import {Place} from './offered-place-card.tsx';
 import {FavoritePlaceCard} from './favorite-place-card.tsx';
+import {Place} from '../shared/types/place.ts';
 
 export type FavoritePlacesCardListProps = {
   favoritePlaces: Place[];
 };
 
 export function FavoritePlacesCardList(props: FavoritePlacesCardListProps) {
-  const [activeCard, setActiveCard] = useState(null);
-
   return (
     <>
       {

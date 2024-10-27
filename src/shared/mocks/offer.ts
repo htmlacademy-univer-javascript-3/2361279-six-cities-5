@@ -1,11 +1,6 @@
-import {Place} from '../components/offered-place-card.tsx';
+import {Place, PlaceType} from '../types/place.ts';
 
-export enum PlaceType {
-  Room = 'room',
-  Apartment = 'apartment'
-}
-
-export const mockPlaceCards: Place[] = [
+export const mockOfferPlaces: Place[] = [
   {
     id: 0,
     rating: 4, cardType: PlaceType.Apartment,

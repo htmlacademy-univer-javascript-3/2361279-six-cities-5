@@ -5,7 +5,7 @@ import {Favorites} from './favorites.tsx';
 import {Offer} from './offer.tsx';
 import {NotFound} from './not-found.tsx';
 import {Authorized} from './authorized.tsx';
-import {Place} from './offered-place-card.tsx';
+import {Place} from '../shared/types/place.ts';
 
 export type AppProps = {
   favoritePlaces: Place[];
@@ -19,7 +19,7 @@ export function App(props: AppProps) {
         <Route index element={<Main offeredPlaces={props.mainPagePlaces}/>}/>
         <Route path='/login' element={<Login/>}/>
         <Route path='/favorites' element={
-          <Authorized isAuthorized={false}> <Favorites favoritePlaces={props.favoritePlaces}/>  </Authorized>
+          <Authorized isAuthorized> <Favorites favoritePlaces={props.favoritePlaces}/>  </Authorized>
         }
         />
         <Route path='/offer/:id' element={<Offer/>}/>
