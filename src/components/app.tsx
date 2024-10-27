@@ -19,7 +19,7 @@ export function App(props: AppProps) {
         <Route index element={<Main offeredPlaces={props.mainPagePlaces}/>}/>
         <Route path='/login' element={<Login/>}/>
         <Route path='/favorites' element={
-          <Authorized isAuthorized> <Favorites favoritePlaces={props.favoritePlaces}/>  </Authorized>
+          <Authorized isAuthorized={false}> <Favorites favoritePlaces={props.favoritePlaces}/>  </Authorized>
         }
         />
         <Route path='/offer/:id' element={<Offer/>}/>
