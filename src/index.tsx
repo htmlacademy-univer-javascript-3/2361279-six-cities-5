@@ -10,6 +10,6 @@ const root = ReactDOM.createRoot(
 
 root.render(
   <React.StrictMode>
-    <App placeCards={mockPlaceCards} favoriteCards={mockFavoriteCards}/>
+    <App mainPagePlaces={mockPlaceCards} favoritePlaces={mockFavoriteCards}/>
   </React.StrictMode>
 );

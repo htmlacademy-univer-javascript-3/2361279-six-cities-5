@@ -1,9 +1,9 @@
-import {PlaceCardProps} from './place_card.tsx';
-import {FavoriteList} from './favorite_list.tsx';
+import {Place} from './offered-place-card.tsx';
+import {FavoritePlacesCardList} from './favorite-places-card-list.tsx';
 import {Layout} from './layout.tsx';
 
 export type FavoritesProps = {
-  favoriteCards: PlaceCardProps[];
+  favoritePlaces: Place[];
 };
 
 export function Favorites(props: FavoritesProps) {
@@ -14,7 +14,7 @@ export function Favorites(props: FavoritesProps) {
           <section className="favorites">
             <h1 className="favorites__title">Saved listing</h1>
             <ul className="favorites__list">
-              <FavoriteList favoriteCards={props.favoriteCards}/>
+              <FavoritePlacesCardList favoritePlaces={props.favoritePlaces}/>
             </ul>
           </section>
         </div>

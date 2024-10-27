@@ -1,9 +1,9 @@
-import {PlaceCardProps} from './place_card.tsx';
-import {OfferList} from './offer_list.tsx';
+import {Place} from './offered-place-card.tsx';
+import {OfferedPlacesCardList} from './offered-places-card-list.tsx';
 import {Layout} from './layout.tsx';
 
 export type MainProps = {
-  placeCards: PlaceCardProps[];
+  offeredPlaces: Place[];
 };
 
 export function Main(props: MainProps) {
@@ -51,7 +51,7 @@ export function Main(props: MainProps) {
           <div className="cities__places-container container">
             <section className="cities__places places">
               <h2 className="visually-hidden">places</h2>
-              <b className="places__found">{props.placeCards.length} places to stay in amsterdam</b>
+              <b className="places__found">{props.offeredPlaces.length} places to stay in amsterdam</b>
               <form className="places__sorting" action="#" method="get">
                 <span className="places__sorting-caption">sort by</span>
                 <span className="places__sorting-type" tabIndex={0}>
@@ -68,7 +68,7 @@ export function Main(props: MainProps) {
                 </ul>
               </form>
               <div className="cities__places-list places__list tabs__content">
-                <OfferList placeCards={props.placeCards}/>
+                <OfferedPlacesCardList offeredPlaces={props.offeredPlaces}/>
               </div>
             </section>
             <div className="cities__right-section">

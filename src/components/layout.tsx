@@ -1,7 +1,7 @@
 import {PropsWithChildren} from 'react';
 import {Link} from 'react-router-dom';
 
-export type LayoutProps = PropsWithChildren;
+export type LayoutProps = { containerClasses: string[] } & PropsWithChildren;
 
 export function Layout(props: LayoutProps) {
   return (
