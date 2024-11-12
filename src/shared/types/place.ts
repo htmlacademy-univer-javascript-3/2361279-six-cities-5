@@ -3,6 +3,8 @@ export enum PlaceType {
   Apartment = 'apartment'
 }
 
+export type Coordinates = { latitude: number; longitude: number };
+
 export type Place = {
   id: number;
   rating: number;
@@ -10,4 +12,5 @@ export type Place = {
   name: string;
   price: number;
   imageName: string;
+  coordinates: Coordinates;
 }
