@@ -1,7 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import {App} from './components/app.tsx';
-import {mockPlaceCards} from './constants.ts';
+import {mockOfferPlaces} from './shared/mocks/offer.ts';
+import {mockFavoritePlaces} from './shared/mocks/favorite.ts';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -9,6 +10,6 @@ const root = ReactDOM.createRoot(
 
 root.render(
   <React.StrictMode>
-    <App placeCards={mockPlaceCards}/>
+    <App mainPagePlaces={mockOfferPlaces} favoritePlaces={mockFavoritePlaces}/>
   </React.StrictMode>
 );

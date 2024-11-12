@@ -1,21 +1,27 @@
 import {Main} from './main.tsx';
-import {ComponentProps} from 'react';
 import {BrowserRouter, Route, Routes} from 'react-router-dom';
 import {Login} from './login.tsx';
 import {Favorites} from './favorites.tsx';
 import {Offer} from './offer.tsx';
-import {NotFound} from './not_found.tsx';
-import {Authorized} from './Authorized.tsx';
+import {NotFound} from './not-found.tsx';
+import {Authorized} from './authorized.tsx';
+import {Place} from '../shared/types/place.ts';
 
-export function App(props: ComponentProps<typeof Main>) {
+export type AppProps = {
+  favoritePlaces: Place[];
+  mainPagePlaces: Place[];
+};
+
+export function App(props: AppProps) {
   return (
     <BrowserRouter>
       <Routes>
-        <Route index element={<Main {...props}/>}/>
+        <Route index element={<Main offeredPlaces={props.mainPagePlaces}/>}/>
         <Route path='/login' element={<Login/>}/>
-        <Route path='/favorites' element={<Authorized isAuthorized={false}/>}/>
-        <Route index element={<Favorites/>}></Route>
-        <Route/>
+        <Route path='/favorites' element={
+          <Authorized isAuthorized={false}> <Favorites favoritePlaces={props.favoritePlaces}/>  </Authorized>
+        }
+        />
         <Route path='/offer/:id' element={<Offer/>}/>
         <Route path='*' element={<NotFound/>}/>
       </Routes>

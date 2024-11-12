@@ -1,30 +1,30 @@
-import {PlaceType} from '../constants.ts';
+import {Link} from 'react-router-dom';
+import {Place} from '../shared/types/place.ts';
+import {MouseEventHandler} from 'react';
 
-export type PlaceCardProps = {
-  rating: number;
-  cardType: PlaceType;
-  description: string;
-  price: number;
-  imageName: string;
-}
+export type OfferedPlaceCardProps = {
+  place: Place;
+  handleMouseOver: MouseEventHandler;
+};
 
-export function PlaceCard(props: PlaceCardProps) {
+export function OfferedPlaceCard(props: OfferedPlaceCardProps) {
+  const offerUrl = `/offer/${props.place.id}`;
   return (
-    <article className='cities__card place-card'>
+    <article onMouseOver={props.handleMouseOver} className='cities__card place-card'>
       <div className='place-card__mark'>
         <span>premium</span>
       </div>
       <div className='cities__image-wrapper place-card__image-wrapper'>
-        <a href='#'>
-          <img className='place-card__image' src={`img/${props.imageName}`} width='260' height='200'
+        <Link to={offerUrl}>
+          <img className='place-card__image' src={`img/${props.place.imageName}`} width='260' height='200'
             alt='place image'
           />
-        </a>
+        </Link>
       </div>
       <div className='place-card__info'>
         <div className='place-card__price-wrapper'>
           <div className='place-card__price'>
-            <b className='place-card__price-value'>&euro;{props.price}</b>
+            <b className='place-card__price-value'>&euro;{props.place.price}</b>
             <span className='place-card__price-text'>&#47;&nbsp;night</span>
           </div>
           <button className='place-card__bookmark-button button' type='button'>
@@ -36,14 +36,14 @@ export function PlaceCard(props: PlaceCardProps) {
         </div>
         <div className='place-card__rating rating'>
           <div className='place-card__stars rating__stars'>
-            <span style={{width: `${props.rating / 5 * 100}%`}}></span>
+            <span style={{width: `${props.place.rating / 5 * 100}%`}}></span>
             <span className='visually-hidden'>rating</span>
           </div>
         </div>
         <h2 className='place-card__name'>
-          <a href='#'>{props.description}</a>
+          <Link to={offerUrl}>{props.place.name}</Link>
         </h2>
-        <p className='place-card__type'>{props.cardType}</p>
+        <p className='place-card__type'>{props.place.cardType}</p>
       </div>
     </article>);
 }
