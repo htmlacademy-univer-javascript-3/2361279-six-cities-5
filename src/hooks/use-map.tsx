@@ -13,12 +13,6 @@ const defaultCustomIcon = L.icon({
   iconAnchor: [20, 40],
 });
 
-const currentCustomIcon = L.icon({
-  iconUrl: URL_MARKER_CURRENT,
-  iconSize: [40, 40],
-  iconAnchor: [20, 40],
-});
-
 export type MapInfo = { points: Coordinates[]; options?: MapOptions}
 export function useMap(mapRef: MutableRefObject<HTMLElement | null>, mapInfo: MapInfo) {
   useEffect(() => {
