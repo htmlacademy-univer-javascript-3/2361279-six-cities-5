@@ -1,25 +1,24 @@
-import {MouseEventHandler, useState} from 'react';
+import {MouseEventHandler} from 'react';
 import {OfferedPlaceCard} from './offered-place-card.tsx';
 import {Place} from '../shared/types/place.ts';
 
 export type OfferedPlacesCardListProps = {
   offeredPlaces: Place[];
+  classes?: string;
+  setActiveCard: (a: number) => void;
 };
 
 export function OfferedPlacesCardList(props: OfferedPlacesCardListProps) {
-  const [, setActiveCard] = useState(null as (null | number));
-
-
   return (
     <>
       {
-        props.offeredPlaces.map((place) => {
+        props.offeredPlaces.map((place, i) => {
           const handleMouseOver: MouseEventHandler = () => {
-            setActiveCard(place.id);
+            props.setActiveCard(i);
           };
 
           return (
-            <OfferedPlaceCard handleMouseOver={handleMouseOver} key={place.id}
+            <OfferedPlaceCard classes={props.classes} handleMouseOver={handleMouseOver} key={place.id}
               place={place}
             />);
         })

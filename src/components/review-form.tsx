@@ -3,7 +3,7 @@ import {ReviewRating, ReviewStar} from './review-star.tsx';
 
 export function ReviewForm() {
   const [reviewData, setReviewData] = useState({
-    review: '',
+    reviewText: '',
     rating: 0
   });
 
@@ -33,7 +33,7 @@ export function ReviewForm() {
       <textarea onChange={handleTextChange}
         className="reviews__textarea form__textarea" id="review" name="review"
         placeholder="Tell how was your stay, what you like and what can be improved"
-        value={reviewData.review}
+        value={reviewData.reviewText}
       >
       </textarea>
       <div className="reviews__button-wrapper">

@@ -13,7 +13,18 @@ const defaultCustomIcon = L.icon({
   iconAnchor: [20, 40],
 });
 
-export type MapInfo = { points: Coordinates[]; options?: MapOptions}
+const currentCustomIcon = L.icon({
+  iconUrl: URL_MARKER_CURRENT,
+  iconSize: [40, 40],
+  iconAnchor: [20, 40],
+});
+
+export type MapInfo = {
+  points: Coordinates[];
+  options?: MapOptions;
+  activePointIndex?: number | null;
+}
+
 export function useMap(mapRef: MutableRefObject<HTMLElement | null>, mapInfo: MapInfo) {
   useEffect(() => {
     const map = L.map(mapRef.current as HTMLElement, mapInfo.options);
@@ -28,13 +39,14 @@ export function useMap(mapRef: MutableRefObject<HTMLElement | null>, mapInfo: Ma
     map.addLayer(layer);
 
     const markerLayer = L.layerGroup().addTo(map);
-    for (const p of mapInfo.points) {
+    for (let i = 0; i < mapInfo.points.length; ++i) {
+      const point = mapInfo.points[i];
       const marker = L.marker({
-        lat: p.latitude,
-        lng: p.longitude
+        lat: point.latitude,
+        lng: point.longitude
       });
-      marker.setIcon(defaultCustomIcon).addTo(markerLayer);
+      marker.setIcon(mapInfo.activePointIndex === i ? currentCustomIcon : defaultCustomIcon).addTo(markerLayer);
     }
     return () => void map.remove();
-  }, []);
+  }, [mapInfo.activePointIndex]);
 }

@@ -3,18 +3,21 @@ import {Layout} from './layout.tsx';
 import {Place} from '../shared/types/place.ts';
 import {Map} from './map.tsx';
 import {MapInfo} from '../hooks/use-map.tsx';
+import {useState} from 'react';
 
 export type MainProps = {
   offeredPlaces: Place[];
 };
 
 export function Main(props: MainProps) {
+  const [activeCardIndex, setActiveCard] = useState<number | null>(null);
   const mapInfo: MapInfo = {
     points: props.offeredPlaces.map((p) => p.coordinates),
     options: {
       center: [52.3909553943508, 4.85309666406198],
       zoom: 11
-    }
+    },
+    activePointIndex: activeCardIndex
   };
 
   return (
@@ -78,11 +81,11 @@ export function Main(props: MainProps) {
                 </ul>
               </form>
               <div className="cities__places-list places__list tabs__content">
-                <OfferedPlacesCardList offeredPlaces={props.offeredPlaces}/>
+                <OfferedPlacesCardList setActiveCard={setActiveCard} classes='cities__card' offeredPlaces={props.offeredPlaces}/>
               </div>
             </section>
             <div className="cities__right-section">
-              <Map mapInfo={mapInfo}/>
+              <Map mapInfo={mapInfo} classes={'cities__map'}/>
             </div>
           </div>
         </div>
