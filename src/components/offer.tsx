@@ -8,9 +8,11 @@ import {mockReviews} from '../shared/mocks/review.ts';
 import {Map} from './map.tsx';
 import {MapInfo} from '../hooks/use-map.tsx';
 import {OfferedPlacesCardList} from './offered-places-card-list.tsx';
+import {useState} from 'react';
 
 export function Offer() {
   const id = parseInt(useParams().id as string, 10);
+  const [activeCardIndex, setActiveCard] = useState<number | null>(null);
   const place = mockOfferPlaces.find((p) => p.id === id);
   if (!place) {
     return <NotFound/>;
@@ -21,7 +23,8 @@ export function Offer() {
     options: {
       center: [52.3909553943508, 4.85309666406198],
       zoom: 11
-    }
+    },
+    activePointIndex: activeCardIndex
   };
 
   return (
@@ -162,7 +165,7 @@ export function Offer() {
           <section className="near-places places">
             <h2 className="near-places__title">Other places in the neighbourhood</h2>
             <div className="near-places__list places__list">
-              <OfferedPlacesCardList classes='near-places__card' offeredPlaces={mockOfferPlaces}/>
+              <OfferedPlacesCardList setActiveCard={setActiveCard} classes='near-places__card' offeredPlaces={mockOfferPlaces}/>
             </div>
           </section>
         </div>
