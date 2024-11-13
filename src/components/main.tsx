@@ -1,12 +1,22 @@
 import {OfferedPlacesCardList} from './offered-places-card-list.tsx';
 import {Layout} from './layout.tsx';
 import {Place} from '../shared/types/place.ts';
+import {Map} from './map.tsx';
+import {MapInfo} from '../hooks/use-map.tsx';
 
 export type MainProps = {
   offeredPlaces: Place[];
 };
 
 export function Main(props: MainProps) {
+  const mapInfo: MapInfo = {
+    points: props.offeredPlaces.map((p) => p.coordinates),
+    options: {
+      center: [52.3909553943508, 4.85309666406198],
+      zoom: 11
+    }
+  };
+
   return (
     <Layout containerClasses={'page--gray page--main'}>
       <main className="page__main page__main--index">
@@ -72,7 +82,7 @@ export function Main(props: MainProps) {
               </div>
             </section>
             <div className="cities__right-section">
-              <section className="cities__map map"></section>
+              <Map mapInfo={mapInfo}/>
             </div>
           </div>
         </div>
