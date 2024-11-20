@@ -6,7 +6,7 @@ import {ReviewForm} from './review-form.tsx';
 import {ReviewItemList} from './review-item-list.tsx';
 import {mockReviews} from '../shared/mocks/review.ts';
 import {Map} from './map.tsx';
-import {MapInfo} from '../hooks/use-map.tsx';
+import {MapInfo} from './map.tsx';
 import {OfferedPlacesCardList} from './offered-places-card-list.tsx';
 import {useState} from 'react';
 

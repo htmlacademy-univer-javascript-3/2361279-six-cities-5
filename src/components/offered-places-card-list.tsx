@@ -5,16 +5,16 @@ import {Place} from '../shared/types/place.ts';
 export type OfferedPlacesCardListProps = {
   offeredPlaces: Place[];
   classes?: string;
-  setActiveCard: (a: number) => void;
+  setActiveCard: (n: number) => void;
 };
 
 export function OfferedPlacesCardList(props: OfferedPlacesCardListProps) {
   return (
     <>
       {
-        props.offeredPlaces.map((place, i) => {
+        props.offeredPlaces.map((place) => {
           const handleMouseOver: MouseEventHandler = () => {
-            props.setActiveCard(i);
+            props.setActiveCard(place.id);
           };
 
           return (
