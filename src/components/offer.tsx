@@ -19,7 +19,7 @@ export function Offer() {
   }
 
   const mapInfo: MapInfo = {
-    points: mockOfferPlaces.map((p) => p.coordinates),
+    points: mockOfferPlaces,
     options: {
       center: [52.3909553943508, 4.85309666406198],
       zoom: 11
