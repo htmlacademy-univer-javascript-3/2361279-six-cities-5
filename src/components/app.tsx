@@ -9,17 +9,18 @@ import {Place} from '../shared/types/place.ts';
 
 export type AppProps = {
   favoritePlaces: Place[];
-  mainPagePlaces: Place[];
 };
 
 export function App(props: AppProps) {
   return (
     <BrowserRouter>
       <Routes>
-        <Route index element={<Main offeredPlaces={props.mainPagePlaces}/>}/>
+        <Route index element={<Main/>}/>
         <Route path='/login' element={<Login/>}/>
         <Route path='/favorites' element={
-          <Authorized isAuthorized={false}> <Favorites favoritePlaces={props.favoritePlaces}/>  </Authorized>
+          <Authorized isAuthorized={false}>
+            <Favorites favoritePlaces={props.favoritePlaces}/>
+          </Authorized>
         }
         />
         <Route path='/offer/:id' element={<Offer/>}/>

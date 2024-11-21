@@ -6,10 +6,5 @@ export type AuthorizedProps = {
 } & PropsWithChildren;
 
 export function Authorized(props: AuthorizedProps) {
-  return (
-    <>
-      {props.isAuthorized || <Navigate to='/login'></Navigate>}
-      {props.children}
-    </>
-  );
+  return props.isAuthorized ? props.children : <Navigate to='/login'></Navigate>;
 }

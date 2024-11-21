@@ -1,16 +1,18 @@
 import {Link} from 'react-router-dom';
 import {Place} from '../shared/types/place.ts';
 import {MouseEventHandler} from 'react';
+import {clsx} from 'clsx';
 
 export type OfferedPlaceCardProps = {
   place: Place;
   handleMouseOver: MouseEventHandler;
+  classes?: string;
 };
 
 export function OfferedPlaceCard(props: OfferedPlaceCardProps) {
   const offerUrl = `/offer/${props.place.id}`;
   return (
-    <article onMouseOver={props.handleMouseOver} className='cities__card place-card'>
+    <article onMouseOver={props.handleMouseOver} className={clsx('place-card', props.classes)}>
       <div className='place-card__mark'>
         <span>premium</span>
       </div>

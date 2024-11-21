@@ -1,69 +1,41 @@
 import {OfferedPlacesCardList} from './offered-places-card-list.tsx';
 import {Layout} from './layout.tsx';
-import {Place} from '../shared/types/place.ts';
 import {Map} from './map.tsx';
-import {MapInfo} from '../hooks/use-map.tsx';
+import {MapInfo} from './map.tsx';
+import {useState} from 'react';
+import {useSelector} from 'react-redux';
+import {StoreState} from '../store/reducer.ts';
+import {Place} from '../shared/types/place.ts';
+import {CityData} from '../shared/types/city.ts';
+import {CityList} from './city-list.tsx';
 
-export type MainProps = {
-  offeredPlaces: Place[];
-};
 
-export function Main(props: MainProps) {
+export function Main() {
+  const offeredPlaces = useSelector<StoreState, Place[]>((state) => state.offers);
+  const cityData = useSelector<StoreState, CityData>((state) => state.cityData);
+  const [activeCardIndex, setActiveCard] = useState<number | null>(null);
+
   const mapInfo: MapInfo = {
-    points: props.offeredPlaces.map((p) => p.coordinates),
+    points: offeredPlaces,
     options: {
-      center: [52.3909553943508, 4.85309666406198],
-      zoom: 11
-    }
+      zoom: cityData.zoom,
+      center: {lat: cityData.center.latitude, lng: cityData.center.longitude}
+    },
+    activePointIndex: activeCardIndex
   };
 
   return (
     <Layout containerClasses={'page--gray page--main'}>
       <main className="page__main page__main--index">
         <h1 className="visually-hidden">cities</h1>
-        <div className="tabs">
-          <section className="locations container">
-            <ul className="locations__list tabs__list">
-              <li className="locations__item">
-                <a className="locations__item-link tabs__item" href="#">
-                  <span>Paris</span>
-                </a>
-              </li>
-              <li className="locations__item">
-                <a className="locations__item-link tabs__item" href="#">
-                  <span>Cologne</span>
-                </a>
-              </li>
-              <li className="locations__item">
-                <a className="locations__item-link tabs__item" href="#">
-                  <span>Brussels</span>
-                </a>
-              </li>
-              <li className="locations__item">
-                <a className="locations__item-link tabs__item tabs__item--active">
-                  <span>Amsterdam</span>
-                </a>
-              </li>
-              <li className="locations__item">
-                <a className="locations__item-link tabs__item" href="#">
-                  <span>Hamburg</span>
-                </a>
-              </li>
-              <li className="locations__item">
-                <a className="locations__item-link tabs__item" href="#">
-                  <span>Dusseldorf</span>
-                </a>
-              </li>
-            </ul>
-          </section>
-        </div>
+        <CityList/>
         <div className="cities">
           <div className="cities__places-container container">
             <section className="cities__places places">
               <h2 className="visually-hidden">places</h2>
-              <b className="places__found">{props.offeredPlaces.length} places to stay in amsterdam</b>
+              <b className="places__found">{offeredPlaces.length} places to stay in amsterdam</b>
               <form className="places__sorting" action="#" method="get">
-                <span className="places__sorting-caption">sort by</span>
+                <span className="places__sorting-caption">sort by </span>
                 <span className="places__sorting-type" tabIndex={0}>
                     popular
                   <svg className="places__sorting-arrow" width="7" height="4">
@@ -78,11 +50,11 @@ export function Main(props: MainProps) {
                 </ul>
               </form>
               <div className="cities__places-list places__list tabs__content">
-                <OfferedPlacesCardList offeredPlaces={props.offeredPlaces}/>
+                <OfferedPlacesCardList setActiveCard={setActiveCard} classes='cities__card' offeredPlaces={offeredPlaces}/>
               </div>
             </section>
             <div className="cities__right-section">
-              <Map mapInfo={mapInfo}/>
+              <Map classes='cities__map' mapInfo={mapInfo}/>
             </div>
           </div>
         </div>
