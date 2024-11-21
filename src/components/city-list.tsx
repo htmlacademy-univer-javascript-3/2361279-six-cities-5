@@ -4,6 +4,7 @@ import {clsx} from 'clsx';
 import {StoreState} from '../store/reducer.ts';
 import {changeCity, fillOffers} from '../store/action.ts';
 
+
 export function CityList() {
   const cities = [...citiesData.keys()];
   const currentCity = useSelector<StoreState, City>((state) => state.cityData.city);
