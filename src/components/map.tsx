@@ -40,7 +40,7 @@ export function Map(props: MapProps) {
         props.mapInfo.points.map((p) =>
           (
             <Marker icon={props.mapInfo.activePointIndex === p.id ? currentCustomIcon : defaultCustomIcon}
-              position={[p.coordinates.latitude, p.coordinates.longitude]}
+              position={[p.location.latitude, p.location.longitude]}
               key={p.id}
             />
           )

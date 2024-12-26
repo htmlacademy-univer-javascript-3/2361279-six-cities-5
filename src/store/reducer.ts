@@ -1,24 +1,28 @@
-import * as RTK from '@reduxjs/toolkit';
-import {fillOffers, changeCity} from './action.ts';
+import {createReducer} from '@reduxjs/toolkit';
+import {fillOffers, changeCity, setOffersLoadingStatus} from './action.ts';
 import {City, CityData, citiesData} from '../shared/types/city.ts';
-import {mockOfferPlaces} from '../shared/mocks/offer.ts';
 import {Place} from '../shared/types/place.ts';
 
 export type StoreState = {
   cityData: CityData;
   offers: Place[];
+  offersLoadingStatus: boolean;
 };
 
-export const reducer = RTK.createReducer<StoreState>({
+export const reducer = createReducer<StoreState>({
   cityData: citiesData.get(City.Paris) as CityData,
-  offers: mockOfferPlaces.filter((p) => p.city === City.Paris)
+  offers: [],
+  offersLoadingStatus: false
 },
 (builder) => {
   builder
-    .addCase(fillOffers, (state) => {
-      state.offers = mockOfferPlaces.filter((p) => p.city === state.cityData.city);
+    .addCase(fillOffers, (state, action) => {
+      state.offers = action.payload;
     })
     .addCase(changeCity, (state, action) => {
       state.cityData = action.payload;
+    })
+    .addCase(setOffersLoadingStatus, (state, action) => {
+      state.offersLoadingStatus = action.payload;
     });
 });

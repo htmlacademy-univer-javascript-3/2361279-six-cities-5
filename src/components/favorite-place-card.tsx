@@ -8,7 +8,7 @@ export function FavoritePlaceCard(props: FavoritePlaceCardProps) {
     <article className="favorites__card place-card">
       <div className="favorites__image-wrapper place-card__image-wrapper">
         <a href="#">
-          <img className="place-card__image" src={`img/${props.place.imageName}`} width="150" height="110"
+          <img className="place-card__image" src={`img/${props.place.previewImage}`} width="150" height="110"
             alt="Place image"
           />
         </a>
@@ -35,9 +35,9 @@ export function FavoritePlaceCard(props: FavoritePlaceCardProps) {
           </div>
         </div>
         <h2 className="place-card__name">
-          <Link to={`/offer/${props.place.id}`}>{props.place.name}</Link>
+          <Link to={`/offer/${props.place.id}`}>{props.place.title}</Link>
         </h2>
-        <p className="place-card__type">{props.place.cardType}</p>
+        <p className="place-card__type">{props.place.type}</p>
       </div>
     </article>);
 }

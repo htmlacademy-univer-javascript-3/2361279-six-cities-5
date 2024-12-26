@@ -4,10 +4,9 @@ import {clsx} from 'clsx';
 import {StoreState} from '../store/reducer.ts';
 import {changeCity, fillOffers} from '../store/action.ts';
 
-
+const cities = [...citiesData.keys()];
 export function CityList() {
-  const cities = [...citiesData.keys()];
-  const currentCity = useSelector<StoreState, City>((state) => state.cityData.city);
+  const currentCity = useSelector<StoreState, City>((state) => state.cityData.name);
   const dispatch = useDispatch();
 
   return (
@@ -19,7 +18,6 @@ export function CityList() {
               <a className={clsx('locations__item-link tabs__item', city === currentCity && 'tabs__item--active')}
                 onClick={() => {
                   dispatch(changeCity(city));
-                  dispatch(fillOffers());
                 }}
               >
                 <span>{city}</span>

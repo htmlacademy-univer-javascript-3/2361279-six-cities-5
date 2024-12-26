@@ -1,19 +1,20 @@
 import {useParams} from 'react-router-dom';
-import {mockOfferPlaces} from '../shared/mocks/offer.ts';
 import {NotFound} from './not-found.tsx';
 import {Layout} from './layout.tsx';
 import {ReviewForm} from './review-form.tsx';
 import {ReviewItemList} from './review-item-list.tsx';
-import {mockReviews} from '../shared/mocks/review.ts';
 import {Map} from './map.tsx';
 import {MapInfo} from './map.tsx';
 import {OfferedPlacesCardList} from './offered-places-card-list.tsx';
 import {useState} from 'react';
+import {useSelector} from 'react-redux';
+import {StoreState} from '../store/reducer.ts';
+import {Place} from '../shared/types/place.ts';
 
 export function Offer() {
-  const id = parseInt(useParams().id as string, 10);
+  const id = useParams().id as string;
   const [activeCardIndex, setActiveCard] = useState<number | null>(null);
-  const place = mockOfferPlaces.find((p) => p.id === id);
+  const place = useSelector<StoreState, Place[]>((state) => state.offers).find((p) => p.id === id);
   if (!place) {
     return <NotFound/>;
   }
@@ -60,7 +61,7 @@ export function Offer() {
               </div>
               <div className="offer__name-wrapper">
                 <h1 className="offer__name">
-                  {place.name}
+                  {place.title}
                 </h1>
                 <button className="offer__bookmark-button button" type="button">
                   <svg className="offer__bookmark-icon" width="31" height="33">
@@ -78,7 +79,7 @@ export function Offer() {
               </div>
               <ul className="offer__features">
                 <li className="offer__feature offer__feature--entire">
-                  {place.cardType}
+                  {place.type}
                 </li>
                 <li className="offer__feature offer__feature--bedrooms">
                   3 Bedrooms

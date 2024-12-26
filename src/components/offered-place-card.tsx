@@ -18,7 +18,7 @@ export function OfferedPlaceCard(props: OfferedPlaceCardProps) {
       </div>
       <div className='cities__image-wrapper place-card__image-wrapper'>
         <Link to={offerUrl}>
-          <img className='place-card__image' src={`img/${props.place.imageName}`} style={{width: 260, height: 200}}
+          <img className='place-card__image' src={`img/${props.place.previewImage}`} style={{width: 260, height: 200}}
             alt='place image'
           />
         </Link>
@@ -43,9 +43,9 @@ export function OfferedPlaceCard(props: OfferedPlaceCardProps) {
           </div>
         </div>
         <h2 className='place-card__name'>
-          <Link to={offerUrl}>{props.place.name}</Link>
+          <Link to={offerUrl}>{props.place.title}</Link>
         </h2>
-        <p className='place-card__type'>{props.place.cardType}</p>
+        <p className='place-card__type'>{props.place.type}</p>
       </div>
     </article>);
 }

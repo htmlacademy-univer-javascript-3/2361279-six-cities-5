@@ -5,7 +5,7 @@ import {Place} from '../shared/types/place.ts';
 export type OfferedPlacesCardListProps = {
   offeredPlaces: Place[];
   classes?: string;
-  setActiveCard: (n: number) => void;
+  setActiveCard: (n: string) => void;
 };
 
 export function OfferedPlacesCardList(props: OfferedPlacesCardListProps) {

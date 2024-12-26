@@ -1,6 +1,17 @@
-import * as RTK from '@reduxjs/toolkit';
+import {configureStore} from '@reduxjs/toolkit';
 import {reducer} from './reducer.ts';
+import {configureAxios} from '../api.ts';
 
-export const store = RTK.configureStore({
-  reducer: reducer
+const axios = configureAxios();
+
+export const store = configureStore({
+  reducer: reducer,
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      thunk: {
+        extraArgument: axios
+      }
+    })
 });
+
+export type AppDispatch = typeof store.dispatch;

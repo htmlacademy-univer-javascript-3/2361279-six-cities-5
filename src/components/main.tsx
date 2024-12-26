@@ -20,7 +20,7 @@ export function Main() {
   const mapInfo: MapInfo = {
     points: offeredPlaces,
     options: {
-      zoom: cityData.zoom,
+      zoom: cityData.center.zoom,
       center: {lat: cityData.center.latitude, lng: cityData.center.longitude}
     },
     activePointIndex: activeCardIndex

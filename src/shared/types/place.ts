@@ -1,19 +1,27 @@
-import {City} from './city.ts';
+import {CityData} from './city.ts';
 
 export enum PlaceType {
   Room = 'room',
-  Apartment = 'apartment'
+  Apartment = 'apartment',
+  House = 'house',
+  Hotel = 'hotel'
 }
 
-export type Coordinates = { latitude: number; longitude: number };
+export type Location = {
+  latitude: number;
+  longitude: number;
+  zoom: number;
+};
 
 export type Place = {
-  id: number;
-  city: City;
-  rating: number;
-  cardType: PlaceType;
-  name: string;
+  id: string;
+  title: string;
+  type: PlaceType;
   price: number;
-  imageName: string;
-  coordinates: Coordinates;
+  city: CityData;
+  location: Location;
+  isFavorite?: boolean;
+  isPremium: boolean;
+  rating: number;
+  previewImage: string;
 }
