@@ -1,17 +1,21 @@
-import {configureStore} from '@reduxjs/toolkit';
-import {reducer} from './reducer.ts';
-import {configureAxios} from '../api.ts';
+import { configureStore } from '@reduxjs/toolkit';
+import rootReducer from './reducer';
+import { createAPI } from '../services/api';
+import { checkAuth } from './action';
 
-const axios = configureAxios();
+export const api = createAPI();
 
 export const store = configureStore({
-  reducer: reducer,
+  reducer: rootReducer,
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       thunk: {
-        extraArgument: axios
-      }
-    })
+        extraArgument: api,
+      },
+    }),
 });
 
+export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
+
+store.dispatch(checkAuth());

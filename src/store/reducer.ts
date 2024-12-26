@@ -1,28 +1,22 @@
-import {createReducer} from '@reduxjs/toolkit';
-import {fillOffers, changeCity, setOffersLoadingStatus} from './action.ts';
-import {City, CityData, citiesData} from '../shared/types/city.ts';
-import {Place} from '../shared/types/place.ts';
+import { combineReducers } from 'redux';
+import cityReducer from './city-reducer';
+import offersReducer from './offers-reducer';
+import currentOfferReducer from './current-offer-reducer';
+import reviewsReducer from './reviews-reducer';
+import nearbyOffersReducer from './nearby-offers-reducer';
+import authReducer from './auth-reducer';
+import userDataReducer from './user-data-reducer';
+import favoritesReducer from './favorites-reducer';
 
-export type StoreState = {
-  cityData: CityData;
-  offers: Place[];
-  offersLoadingStatus: boolean;
-};
-
-export const reducer = createReducer<StoreState>({
-  cityData: citiesData.get(City.Paris) as CityData,
-  offers: [],
-  offersLoadingStatus: false
-},
-(builder) => {
-  builder
-    .addCase(fillOffers, (state, action) => {
-      state.offers = action.payload;
-    })
-    .addCase(changeCity, (state, action) => {
-      state.cityData = action.payload;
-    })
-    .addCase(setOffersLoadingStatus, (state, action) => {
-      state.offersLoadingStatus = action.payload;
-    });
+const rootReducer = combineReducers({
+  city: cityReducer,
+  offers: offersReducer,
+  currentOffer: currentOfferReducer,
+  reviews: reviewsReducer,
+  nearbyOffers: nearbyOffersReducer,
+  authorizationStatus: authReducer,
+  userData: userDataReducer,
+  favorites: favoritesReducer,
 });
+
+export default rootReducer;
