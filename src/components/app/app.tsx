@@ -6,12 +6,8 @@ import FavoritesScreen from '../../pages/favorites-screen/favorites-screen';
 import OfferScreen from '../../pages/offer-screen/offer-screen';
 import NotFoundScreen from '../../pages/not-found-screen/not-found-screen';
 import PrivateRoute from '../private-route/private-route';
-import {useSelector} from 'react-redux';
-import {selectAuthorizationStatus} from '../../store/selectors.ts';
 
 function App() {
-  const authorizationStatus = useSelector(selectAuthorizationStatus);
-
   return (
     <BrowserRouter>
       <Routes>
