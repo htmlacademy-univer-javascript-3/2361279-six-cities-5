@@ -12,8 +12,6 @@ import {selectAuthorizationStatus} from '../../store/selectors.ts';
 function App() {
   const authorizationStatus = useSelector(selectAuthorizationStatus);
 
-  console.log(authorizationStatus);
-
   return (
     <BrowserRouter>
       <Routes>
