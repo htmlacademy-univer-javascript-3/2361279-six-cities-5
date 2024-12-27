@@ -54,7 +54,7 @@ const getRatingTitle = (value: number): string => {
   }
 };
 
-const ReviewFormComponent = React.memo(({ offerId }: { offerId: string }): JSX.Element => {
+const ReviewFormComponent = React.memo(({ offerId }: { offerId: string }) => {
   const dispatch: AppDispatch = useDispatch();
   const [state, dispatchState] = useReducer(reviewFormReducer, initialState);
 

@@ -7,7 +7,7 @@ import { selectAuthorizationStatus } from '../../store/selectors';
 import { AppDispatch } from '../../store';
 import React from 'react';
 
-const LoginScreen = React.memo((): JSX.Element => {
+const LoginScreen = React.memo(() => {
   const dispatch: AppDispatch = useDispatch();
 
   const [email, setEmail] = useState('');

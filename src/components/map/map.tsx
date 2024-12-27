@@ -13,7 +13,7 @@ type MapComponentProps = {
   hoveredPoint: Offer | undefined;
 };
 
-const MapComponent = React.memo(({ city, points, selectedPoint, hoveredPoint }: MapComponentProps): JSX.Element => {
+const MapComponent = React.memo(({ city, points, selectedPoint, hoveredPoint }: MapComponentProps) => {
   const mapRef = useRef(null);
   const map = useMap(mapRef, city);
 

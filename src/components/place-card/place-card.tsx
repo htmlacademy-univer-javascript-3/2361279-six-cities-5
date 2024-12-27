@@ -6,7 +6,7 @@ type PlaceCardProps = {
   id: number;
 };
 
-function PlaceCard(props: PlaceCardProps): JSX.Element {
+function PlaceCard(props: PlaceCardProps) {
   const {id} = props;
   return (
     <article className="cities__card place-card">

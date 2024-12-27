@@ -16,7 +16,7 @@ type CardComponentProps = {
   onMouseLeave: () => void;
 };
 
-const CardComponent = React.memo(({ offer, cardType, isFavorite, authorizationStatus, onMouseEnter, onMouseLeave }: CardComponentProps): JSX.Element => {
+const CardComponent = React.memo(({ offer, cardType, isFavorite, authorizationStatus, onMouseEnter, onMouseLeave }: CardComponentProps) => {
   const dispatch: AppDispatch = useDispatch();
   const navigate = useNavigate();
 

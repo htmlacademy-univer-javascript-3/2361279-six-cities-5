@@ -7,7 +7,7 @@ type SortOptionsProps = {
 
 const SORT_TYPES = ['Popular', 'Price: low to high', 'Price: high to low', 'Top rated first'];
 
-const SortOptions = React.memo(({ onSortChange }: SortOptionsProps): JSX.Element => {
+const SortOptions = React.memo(({ onSortChange }: SortOptionsProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedSort, setSelectedSort] = useState('Popular');
 

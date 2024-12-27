@@ -6,7 +6,7 @@ type ReviewListComponentProps = {
   reviews: Reviews;
 }
 
-const ReviewListComponent = React.memo(({ reviews }: ReviewListComponentProps): JSX.Element => {
+const ReviewListComponent = React.memo(({ reviews }: ReviewListComponentProps) => {
   const sortedReviews = useMemo(() => reviews
     .slice()
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())

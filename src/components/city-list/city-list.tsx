@@ -7,7 +7,7 @@ type CityListProps = {
   onCityChange: (city: City) => void;
 };
 
-const CityList = React.memo(({ cities, currentCity, onCityChange }: CityListProps): JSX.Element => {
+const CityList = React.memo(({ cities, currentCity, onCityChange }: CityListProps) => {
   const handleCityClick = useCallback((city: City) => () => {
     onCityChange(city);
   }, [onCityChange]);

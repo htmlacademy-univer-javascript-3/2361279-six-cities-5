@@ -6,7 +6,7 @@ type ReviewComponentProps = {
   review: Review;
 }
 
-const ReviewComponent = React.memo(({ review }: ReviewComponentProps): JSX.Element => {
+const ReviewComponent = React.memo(({ review }: ReviewComponentProps) => {
   const formattedDate = useMemo(() => {
     const month = monthMap[Number(review.date.slice(5, 7))];
     const year = review.date.slice(0, 4);

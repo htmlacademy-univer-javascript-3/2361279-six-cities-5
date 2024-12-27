@@ -12,7 +12,7 @@ import { CITIES } from '../../const';
 import { useState, useEffect, useCallback } from 'react';
 import { AppDispatch } from '../../store';
 
-function MainScreen(): JSX.Element {
+function MainScreen() {
   const dispatch: AppDispatch = useDispatch();
   const city = useSelector(selectCity);
   const offers = useSelector(selectOffers);

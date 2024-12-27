@@ -16,7 +16,7 @@ type CardListComponentProps = {
   authorizationStatus: AuthorizationStatus;
 };
 
-const CardListComponent = React.memo(({ offers, cardsType, onCardHover, favorites, authorizationStatus }: CardListComponentProps): JSX.Element => {
+const CardListComponent = React.memo(({ offers, cardsType, onCardHover, favorites, authorizationStatus }: CardListComponentProps) => {
   const [, setActiveCard] = useState<string | null>(ACTIVE_CARD);
   const dispatch: AppDispatch = useDispatch();
   const navigate = useNavigate();

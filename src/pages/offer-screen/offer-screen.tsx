@@ -12,7 +12,7 @@ import { fetchOffer, fetchReviews, fetchNearbyOffers, logout, toggleFavoriteStat
 import { AppDispatch } from '../../store/index';
 import React from 'react';
 
-const OfferScreen = React.memo((): JSX.Element => {
+const OfferScreen = React.memo(() => {
   const navigate = useNavigate();
   const dispatch: AppDispatch = useDispatch();
   const offerId = useParams().id ?? '';

@@ -8,7 +8,7 @@ import { AppDispatch } from '../../store';
 import { logout } from '../../store/action';
 import React, { useCallback, useMemo } from 'react';
 
-const FavoritesScreen = React.memo((): JSX.Element => {
+const FavoritesScreen = React.memo(() => {
   const dispatch: AppDispatch = useDispatch();
 
   const authorizationStatus = useSelector(selectAuthorizationStatus);

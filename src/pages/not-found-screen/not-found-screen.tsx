@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import React from 'react';
 
-const NotFoundScreen = React.memo((): JSX.Element => (
+const NotFoundScreen = React.memo(() => (
   <section className="page page--gray page--main">
     <header className="header">
     </header>
