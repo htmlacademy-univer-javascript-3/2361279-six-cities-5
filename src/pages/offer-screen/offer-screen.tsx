@@ -1,5 +1,5 @@
 import { AppRoute, AuthorizationStatus } from '../../const';
-import { CardType, Offer } from '../../types/types';
+import { CardType } from '../../types/types';
 import { useParams, Link, NavLink, Navigate, useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectCurrentOffer, selectReviews, selectNearbyOffers, selectLoadingStatusOffer, selectAuthorizationStatus, selectUserData, selectFavorites } from '../../store/selectors';
@@ -7,7 +7,7 @@ import CardListComponent from '../../components/card-list/card-list';
 import ReviewFormComponent from '../../components/review-form/review-form';
 import ReviewListComponent from '../../components/review-list/review-list';
 import MapComponent from '../../components/map/map';
-import { useState, useEffect, useCallback, useMemo } from 'react';
+import { useEffect, useCallback, useMemo } from 'react';
 import { fetchOffer, fetchReviews, fetchNearbyOffers, logout, toggleFavoriteStatus } from '../../store/action';
 import { AppDispatch } from '../../store/index';
 import React from 'react';
@@ -33,8 +33,6 @@ const OfferScreen = React.memo(() => {
   const userData = useSelector(selectUserData);
   const favorites = useSelector(selectFavorites);
   const isFavorite = useMemo(() => favorites.some((favorite) => favorite.id === currentOffer?.id), [favorites, currentOffer]);
-
-  const [hoveredOffer, setHoveredOffer] = useState<Offer | undefined>(undefined);
 
   const handleLogoutClick = useCallback((evt: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
     evt.preventDefault();
@@ -192,13 +190,13 @@ const OfferScreen = React.memo(() => {
             </div>
           </div>
           <section className="offer__map map">
-            <MapComponent city={currentOffer.city} points={nearPlaces.slice(0, 3)} selectedPoint={currentOffer} hoveredPoint={hoveredOffer} />
+            <MapComponent city={currentOffer.city} points={nearPlaces.slice(0, 3)} selectedPoint={currentOffer}/>
           </section>
         </section>
         <div className="container">
           <section className="near-places places">
             <h2 className="near-places__title">Other places in the neighbourhood</h2>
-            <CardListComponent offers={nearPlaces.slice(0, 3)} cardsType={CardType.Near} onCardHover={setHoveredOffer} favorites={favorites} authorizationStatus={authorizationStatus} />
+            <CardListComponent offers={nearPlaces.slice(0, 3)} cardsType={CardType.Near} favorites={favorites} authorizationStatus={authorizationStatus} />
           </section>
         </div>
       </main>

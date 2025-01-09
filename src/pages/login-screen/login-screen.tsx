@@ -7,6 +7,8 @@ import { selectAuthorizationStatus } from '../../store/selectors';
 import { AppDispatch } from '../../store';
 import React from 'react';
 
+const passwordRegExp = /[a-zA-Z].*\d|\d.*[a-zA-Z]/;
+
 const LoginScreen = React.memo(() => {
   const dispatch: AppDispatch = useDispatch();
 
@@ -24,6 +26,11 @@ const LoginScreen = React.memo(() => {
 
   const handleSubmit = useCallback((evt: FormEvent<HTMLFormElement>) => {
     evt.preventDefault();
+    if(!passwordRegExp.test(password)) {
+      // eslint-disable-next-line no-alert
+      alert('Пароль должен содержать хотя бы одну букву и одну цифру');
+      return;
+    }
     dispatch(login({ email, password }));
   }, [dispatch, email, password]);
 
