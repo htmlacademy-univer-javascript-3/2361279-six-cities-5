@@ -9,8 +9,8 @@ import React from 'react';
 type MapComponentProps = {
   city: City;
   points: Offers;
-  selectedPoint: WideOffer | undefined;
-  hoveredPoint: Offer | undefined;
+  selectedPoint?: WideOffer;
+  hoveredPoint?: Offer;
 };
 
 const MapComponent = React.memo(({ city, points, selectedPoint, hoveredPoint }: MapComponentProps) => {
